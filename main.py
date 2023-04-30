@@ -1,9 +1,10 @@
 import discord
+import bot_data
 
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = discord.Client(command_prefix = '$', intents=intents)
+client = discord.Client(command_prefix = bot_data.command_prefix, intents=intents)
 
 @client.event
 async def on_ready():
@@ -27,4 +28,4 @@ def bot_request_hello(txt: str):
     return False
 
 
-client.run('ODE2NzMyMjcwNTg4NzIzMjQx.Gl5uEP.PqBSNQr61r1SpH1o-XlJVQmRoEIFqbFxY3pjyY')
+client.run(bot_data.token)
