@@ -13,12 +13,22 @@ time TEXT NOT NULL
 connect.commit()
 
 
-def insert_data(data1, data2):
-    cursor.execute(f"""
-        INSERT INTO `timetable` VALUES
-            ({data1}, {data2}, "13:30");
-    """)
-    connect.commit()
 
-res = cursor.execute("SELECT * FROM `timetable`;")
-print(res.fetchall())
+
+def insert_date_lesson(*args):
+    cursor.execute(f"""
+            INSERT INTO `timetable` VALUES
+                ({date}, {month}, {year});
+        """)
+    connect.commit()
+    return "Данные вставлены"
+
+
+def get_date_of_all_lesson():
+    res = cursor.execute("SELECT * FROM `timetable`;")
+    return res.fetchall()
+
+def get_nearest_lesson():
+
+
+
