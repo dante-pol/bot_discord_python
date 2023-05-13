@@ -1,5 +1,7 @@
 import discord
 import bot_data
+import businesslogic
+from businesslogic import DefaultCommand
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -15,17 +17,12 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if bot_request_hello(message.content):
-        await message.channel.send('Hello! I am Alex!')
+    if businesslogic.check_command_prefix(message.content):
+        await message.channel.send(businesslogic.DefaultCommand.start_pars_to_message(message.content))
+    else:
+        text = DefaultCommand.start_pars_to_message(message.content)
+        await message.channel.send(text)
 
-
-def bot_request_hello(txt: str):
-    lst = ["hi", "hello", "good", "hey"]
-    if txt.startswith('$'):
-        for i in lst:
-            if i in txt:
-                return True
-    return False
 
 
 client.run(bot_data.token)
