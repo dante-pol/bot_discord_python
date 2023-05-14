@@ -6,29 +6,28 @@ from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.message_content = True
-
-bot = commands.Bot(command_prefix = bot_data.command_prefix, intents=intents)
-
-@bot.event
-async def on_ready():
-    print(f'We have logged in as {bot.user}')
-
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
-    if businesslogic.check_command_prefix(message.content):
-        await message.channel.send(businesslogic.DefaultCommand.start_pars_to_message(message.content))
-    else:
-        text = DefaultCommand.start_pars_to_message(message.content)
-        await message.channel.send(text)
+bot = commands.Bot(command_prefix="$", intents=intents)
 
 
 
-@bot.command()
-async def timetable(ctx, key):
-    await ctx.send(key)
+@bot.command() # Не передаём аргумент pass_context, так как он был нужен в старых версиях.
+async def att(ctx): # Создаём функцию и передаём аргумент ctx.
+    author = ctx.message.author # Объявляем переменную author и записываем туда информацию об авторе.
+    await ctx.send(f'руддщ')
+
+
+@bot.command() # Не передаём аргумент pass_context, так как он был нужен в старых версиях.
+async def info(ctx): # Создаём функцию и передаём аргумент ctx.
+    author = ctx.message.author # Объявляем переменную author и записываем туда информацию об авторе.
+    await ctx.send(f'Привет, {author.mention}! У меня есть следующие команды :\n'
+                   f'$att - вывод всех запланированных занятий\n'
+                   f'$addtt (дд.мм.гггг час.минуты) - добавление нового занятия\n'
+                   f'$ftt - предстоящее занятие')
+
+@bot.command() # Не передаём аргумент pass_context, так как он был нужен в старых версиях.
+async def addtt(ctx, arg1, arg2): # Создаём функцию и передаём аргумент ctx.
+    author = ctx.message.author # Объявляем переменную author и записываем туда информацию об авторе.
+    await ctx.send(f'{arg1} {arg2}')
 
 bot.run(bot_data.token)
 
