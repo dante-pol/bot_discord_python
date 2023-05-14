@@ -29,5 +29,6 @@ async def addtt(ctx, arg1, arg2): # Создаём функцию и перед�
     author = ctx.message.author # Объявляем переменную author и записываем туда информацию об авторе.
     await ctx.send(f'{arg1} {arg2}')
 
-bot.run(bot_data.token)
+token = input("input token :")
+bot.run(token)
 
