@@ -2,19 +2,20 @@ import discord
 import bot_data
 import businesslogic
 from businesslogic import DefaultCommand
+from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = discord.Client(command_prefix = bot_data.command_prefix, intents=intents)
+bot = commands.Bot(command_prefix = bot_data.command_prefix, intents=intents)
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'We have logged in as {client.user}')
+    print(f'We have logged in as {bot.user}')
 
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == bot.user:
         return
 
     if businesslogic.check_command_prefix(message.content):
@@ -25,4 +26,9 @@ async def on_message(message):
 
 
 
-client.run(bot_data.token)
+@bot.command()
+async def timetable(ctx, key):
+    await ctx.send(key)
+
+bot.run(bot_data.token)
+

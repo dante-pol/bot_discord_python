@@ -13,8 +13,6 @@ time TEXT NOT NULL
 connect.commit()
 
 
-
-
 def insert_date_lesson(*args):
     cursor.execute(f"""
             INSERT INTO `timetable` VALUES
@@ -29,6 +27,3 @@ def get_date_of_all_lesson():
     return res.fetchall()
 
 def get_nearest_lesson():
-
-
-
