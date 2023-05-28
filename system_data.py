@@ -1,3 +1,2 @@
-token = ''
 command_prefix = ">"
 

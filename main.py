@@ -1,5 +1,5 @@
 import discord
-import bot_data
+import system_data
 import businesslogic
 from businesslogic import DefaultCommand
 from discord.ext import commands
@@ -29,6 +29,5 @@ async def addtt(ctx, arg1, arg2): # Создаём функцию и перед�
     author = ctx.message.author # Объявляем переменную author и записываем туда информацию об авторе.
     await ctx.send(f'{arg1} {arg2}')
 
-token = input("input token :")
-bot.run(token)
-
+# token = input("input token :")
+# bot.run(token)

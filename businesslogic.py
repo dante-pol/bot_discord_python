@@ -33,7 +33,7 @@ bot_words_how_are_you = {1: "хорошо",
 message = None
 
 def check_command_prefix(message) -> bool:
-    import bot_data
+    import system_data
     if message.startswith(bot_data.command_prefix):
         return True
     return False
