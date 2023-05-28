@@ -1,10 +1,7 @@
-import discord
-import system_data
-import businesslogic
-from businesslogic import DefaultCommand
-from discord.ext import commands
+from Tool import info_command
 
 
 
-# token = input("input token :")
-# bot.run(token)
+if __name__ == "__main__": # entry point
+    token = input("input token :")
+    info_command.bot.run(token)
