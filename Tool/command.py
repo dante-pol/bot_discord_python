@@ -24,14 +24,14 @@ async def info(ctx):# информация о командах
 
 # instrumental command -------------------------------------
 @bot.command()
-async def addtt(ctx, *args):# команда добавления занятия
+async def addtt(ctx, arg1, arg2):# команда добавления занятия
     author = ctx.message.author
-    await ctx.send(f'{args}')
+    await ctx.send(busingesslogic_data_base.insert_date_lesson(arg1, arg2))
 
 @bot.command()
 async def att(ctx):# команда вывода всех занятий
     author = ctx.message.author
-    await ctx.send(busingesslogic_data_base.get_date_of_all_lesson())
+    await ctx.send(busingesslogic_data_base.insert_date_lesson())
 
 @bot.command()
 async def ftt(ctx): #  команда ближайщего занятия

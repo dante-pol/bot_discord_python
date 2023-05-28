@@ -7,7 +7,7 @@ cursor = connect.cursor()
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS `timetable` (
 id INTEGER NOT NULL PRIMARY KEY,
-date_&_time INTEGER NOT NULL
+date_and_time INTEGER NOT NULL
 );
 """)
 connect.commit()
@@ -17,12 +17,14 @@ def start():
     cursor = connect.cursor()
 
 def insert_date_lesson(*args):
-    f = args[0] + '.' + args[1]
+    print(args)
+    lst = list(args)
+    f = lst[0] + '.' + lst[1]
     date = datetime.datetime.strptime(f, '%d.%m.%Y.%H.%M')
     date_uts = datetime.datetime.timestamp(date)
 
     cursor.execute(f"""
-            INSERT INTO `timetable`.`date_&_time` VALUES
+            INSERT INTO `timetable`.`date_and_time` VALUES
                 ({date_uts});
         """)
     connect.commit()
@@ -30,7 +32,7 @@ def insert_date_lesson(*args):
 
 
 def get_date_of_all_lesson():
-    res = cursor.execute("SELECT `date_&_time` FROM `timetable`;")
+    res = cursor.execute("SELECT `date_and_time` FROM `timetable`;")
     lstDateTime = res.fetchall()
     str = ''
 
