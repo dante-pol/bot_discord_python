@@ -8,7 +8,7 @@ bot = commands.Bot(command_prefix=command_prefix, intents=intents)
 
 # information command -------------------------------------
 @bot.command()
-async def creater(ctx):# информация о создателях
+async def creater(ctx):# команда об информации о создателях
     await ctx.send(f"Данный бот был создан при поддержке компании ООО <<Школа программной инженерии>>\n"
                    f"программистами Зенин Василий и Евгений Невдах ")
 
@@ -23,11 +23,16 @@ async def info(ctx):# информация о командах
 
 # instrumental command -------------------------------------
 @bot.command()
-async def addtt(ctx, arg1, arg2):# функция добавления учебного занятия
+async def addtt(ctx, *args):# команда добавления занятия
     author = ctx.message.author
-    await ctx.send(f'{arg1} {arg2}')
+    await ctx.send(f'{args}')
 
 @bot.command()
-async def att(ctx):# функция вывода всех команд
+async def att(ctx):# команда вывода всех занятий
     author = ctx.message.author
     await ctx.send(f'руддщ')
+
+@bot.command()
+async def ftt(ctx): #  команда ближайщего занятия
+    author = ctx.message.author
+    await ctx.send(f"{author}, ближайщее занятие запланировано на: ")
