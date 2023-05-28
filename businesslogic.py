@@ -1,40 +1,7 @@
-users_words_greetings = ["привет",
-                   "утро",
-                   "день",
-                   "вечер",
-                   "ночь",
-                   "хай",
-                   "ку",
-                   "салют"
-                         ]
-
-users_words_how_are_you = ["дела?",
-                           "дела",
-                           "как дела",
-                           "как дела?",
-                           "как жизнь?"]
-
-bot_words_greetings = { 1: "Привет!",
-                        2: "Доброе утро!",
-                        3: "Добрый день!",
-                        4: "Добрый вечер!",
-                        5: "Доброй ночи!",
-                        6: "Салют!"}
-
-bot_words_greetings_with_error = ["я не понимаю вашего приветствия ",
-                                  "не несите чушь",
-                                  "я ушел в магазин..."]
-
-bot_words_how_are_you = {1: "хорошо",
-                         2: "все идет по плану",
-                         3: "хочу домой",
-                         4: "отлично!!"
-                        }
-message = None
-
+import system_data
 def check_command_prefix(message) -> bool:
     import system_data
-    if message.startswith(bot_data.command_prefix):
+    if message.startswith(system_data.command_prefix):
         return True
     return False
 
@@ -47,15 +14,15 @@ class DefaultCommand:
     @staticmethod
     def get_word_greeting(word: str = "") -> str:
         from random import randint
-        index = randint(0, len(bot_words_greetings))
-        return bot_words_greetings[index]
+        index = randint(0, len(system_data.bot_words_greetings))
+        return system_data.bot_words_greetings[index]
 
 
     @staticmethod
     def get_word_how_are_you(word: str = "") -> str:
         from random import randint
-        index = randint(0, len(bot_words_how_are_you))
-        return bot_words_how_are_you[index]
+        index = randint(0, len(system_data.bot_words_how_are_you))
+        return system_data.bot_words_how_are_you[index]
 
 
     @staticmethod
@@ -72,7 +39,7 @@ class DefaultCommand:
 
     @staticmethod
     def check_greeting(message : str) -> tuple:
-        for i in users_words_greetings:
+        for i in system_data.users_words_greetings:
             if i in message:
                 return True, i
         return False, None
@@ -80,7 +47,7 @@ class DefaultCommand:
 
     @staticmethod
     def check_how_are_you(message : str) -> tuple:
-        for i in users_words_how_are_you:
+        for i in system_data.users_words_how_are_you:
             if i in message:
                 return True, i
         return False, None
