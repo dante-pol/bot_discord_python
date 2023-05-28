@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from system_data import command_prefix
+import busingesslogic_data_base
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -30,9 +31,9 @@ async def addtt(ctx, *args):# команда добавления занятия
 @bot.command()
 async def att(ctx):# команда вывода всех занятий
     author = ctx.message.author
-    await ctx.send(f'руддщ')
+    await ctx.send(busingesslogic_data_base.get_date_of_all_lesson())
 
 @bot.command()
 async def ftt(ctx): #  команда ближайщего занятия
     author = ctx.message.author
-    await ctx.send(f"{author}, ближайщее занятие запланировано на: ")
+    await ctx.send(f"{author.mention}, ближайщее занятие запланировано на: ")
