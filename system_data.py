@@ -33,3 +33,4 @@ bot_words_how_are_you = {1: "хорошо",
                          4: "отлично!!"
                         }
 message = None
+
